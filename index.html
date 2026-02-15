@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>실행기 다운로드 센터</title>
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#050505;
+  color:white;
+}
+
+/* 디스코드 배너 */
+.discord-banner{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  padding:12px;
+  background:#0f0f0f;
+  border-bottom:2px solid #222;
+}
+.discord-banner a{
+  padding:10px 18px;
+  background:#5865F2;
+  color:white;
+  text-decoration:none;
+  border-radius:6px;
+  font-weight:bold;
+}
+.discord-banner a:hover{
+  background:#4752c4;
+}
+
+/* 상단 */
+header{
+  background:#0a0a0a;
+  padding:10px;
+  text-align:center;
+  border-bottom:2px solid #222;
+}
+header h1{
+  margin:5px 0;
+}
+.warning-top{
+  font-size:12px;
+  color:#ff5555;
+  line-height:1.4;
+}
+
+/* 버튼 */
+.controls{
+  text-align:center;
+  padding:15px;
+}
+.controls button{
+  padding:10px 16px;
+  margin:5px;
+  background:#111;
+  border:1px solid #333;
+  color:white;
+  cursor:pointer;
+}
+.controls button:hover{
+  background:#1f3cff;
+}
+.controls input{
+  margin-top:10px;
+  padding:10px;
+  width:90%;
+  max-width:400px;
+  background:#0a0a0a;
+  border:1px solid #333;
+  color:white;
+}
+
+/* 카드 */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:15px;
+  padding:20px;
+}
+.card{
+  background:#0b0b0b;
+  border:1px solid #333;
+  padding:15px;
+}
+.badge{
+  display:inline-block;
+  padding:3px 7px;
+  font-size:12px;
+  margin-right:5px;
+}
+.win{background:#222;}
+.mobile{background:#3a1f5c;}
+.free{background:#2ecc71;}
+.paid{background:#c0392b;}
+
+a{
+  display:block;
+  margin-top:10px;
+  padding:8px;
+  text-align:center;
+  background:#111;
+  border:1px solid #333;
+  color:white;
+  text-decoration:none;
+}
+a:hover{
+  background:#1f3cff;
+}
+
+/* 푸터 */
+footer{
+  background:#0a0a0a;
+  text-align:center;
+  padding:15px;
+  border-top:2px solid #222;
+  font-size:14px;
+}
+
+/* 경고창 */
+#alertBox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.9);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+#alertContent{
+  background:#000;
+  border:2px solid red;
+  padding:20px;
+  max-width:350px;
+  text-align:center;
+  color:#0f0;
+}
+#alertContent button{
+  margin-top:15px;
+  padding:10px 20px;
+  border:1px solid red;
+  background:black;
+  color:red;
+}
+</style>
+</head>
+<body>
+
+<!-- 경고창 -->
+<div id="alertBox">
+  <div id="alertContent">
+    <h3>[ 경고 ]</h3>
+    <p>
+      본 사이트의 링크로 인해 발생하는<br>
+      모든 문제에 대해 운영자는<br>
+      책임지지 않습니다.
+    </p>
+    <button onclick="closeAlert()">확인</button>
+  </div>
+</div>
+
+<!-- 디스코드 배너 -->
+<div class="discord-banner">
+  <a href="https://discord.gg/zq5gEvUxZC" target="_blank">🔥 공식 디스코드 서버</a>
+  <a href="https://discord.gg/golpi-community" target="_blank">💬 커뮤니티 서버</a>
+</div>
+
+<header>
+  <h1>로블록스 실행기 다운로드 센터</h1>
+  <div class="warning-top">
+    ⚠ 모든 링크는 외부 사이트입니다.<br>
+    ⚠ 사용에 따른 책임은 사용자에게 있습니다.<br>
+    ⚠ iOS / macOS는 지원하지 않습니다.
+  </div>
+</header>
+
+<div class="controls">
+<button onclick="filter('all')">전체</button>
+<button onclick="filter('win')">Windows</button>
+<button onclick="filter('mobile')">Mobile</button><br>
+<input type="text" id="search" placeholder="검색">
+</div>
+
+<div class="grid" id="list">
+
+<div class="card win"><h3>Xeno</h3><span class="badge win">Windows</span><span class="badge free">무료</span><a href="https://www.xeno.onl" target="_blank">다운로드</a></div>
+<div class="card win"><h3>Solara</h3><span class="badge win">Windows</span><span class="badge free">무료</span><a href="https://getsolara.dev" target="_blank">다운로드</a></div>
+<div class="card win"><h3>Bunni</h3><span class="badge win">Windows</span><span class="badge free">무료</span><a href="https://bunni.fun" target="_blank">다운로드</a></div>
+<div class="card win"><h3>Velocity</h3><span class="badge win">Windows</span><span class="badge free">무료</span><a href="https://realvelocity.xyz" target="_blank">다운로드</a></div>
+
+<div class="card win"><h3>SirHurt</h3><span class="badge win">Windows</span><span class="badge paid">유료</span><a href="https://sirhurt.net" target="_blank">사이트 이동</a></div>
+<div class="card win"><h3>Cryptic</h3><span class="badge win">Windows</span><span class="badge paid">유료</span><a href="https://getcryptic.net" target="_blank">사이트 이동</a></div>
+<div class="card win"><h3>Wave</h3><span class="badge win">Windows</span><span class="badge paid">유료</span><a href="https://getwave.gg" target="_blank">사이트 이동</a></div>
+<div class="card win"><h3>Potassium</h3><span class="badge win">Windows</span><span class="badge paid">유료</span><a href="https://potassium.pro" target="_blank">사이트 이동</a></div>
+<div class="card win"><h3>Volcano</h3><span class="badge win">Windows</span><span class="badge paid">유료</span><a href="https://volcano.wtf" target="_blank">사이트 이동</a></div>
+<div class="card win"><h3>Seliware</h3><span class="badge win">Windows</span><span class="badge paid">유료</span><a href="https://seliware.com" target="_blank">사이트 이동</a></div>
+<div class="card win"><h3>Volt</h3><span class="badge win">Windows</span><span class="badge paid">유료</span><a href="https://volt.bz" target="_blank">사이트 이동</a></div>
+
+<div class="card mobile"><h3>Codex</h3><span class="badge mobile">Mobile</span><span class="badge free">무료</span><a href="https://codex.lol" target="_blank">다운로드</a></div>
+<div class="card mobile"><h3>Vega X</h3><span class="badge mobile">Mobile</span><span class="badge free">무료</span><a href="https://www.vegax.gg" target="_blank">다운로드</a></div>
+<div class="card mobile"><h3>Delta</h3><span class="badge mobile">Mobile</span><span class="badge free">무료</span><a href="https://deltaexploits.gg" target="_blank">다운로드</a></div>
+<div class="card mobile"><h3>Cryptic Mobile</h3><span class="badge mobile">Mobile</span><span class="badge free">무료</span><a href="https://getcryptic.net" target="_blank">다운로드</a></div>
+
+</div>
+
+<footer>
+<p>후원: 로블록스 기프트카드</p>
+<p>후원자 중 랜덤으로 무료 키 지급</p>
+<p>문의: 디스코드 DM → this_name_1004</p>
+</footer>
+
+<script>
+function filter(type){
+  document.querySelectorAll('.card').forEach(c=>{
+    if(type==='all') c.style.display='block';
+    else if(c.classList.contains(type)) c.style.display='block';
+    else c.style.display='none';
+  });
+}
+
+document.getElementById("search").addEventListener("input",function(){
+  let q=this.value.toLowerCase();
+  document.querySelectorAll(".card").forEach(c=>{
+    c.style.display=c.innerText.toLowerCase().includes(q)?"block":"none";
+  });
+});
+
+if(!localStorage.getItem("confirmWarning")){
+  document.getElementById("alertBox").style.display="flex";
+}
+function closeAlert(){
+  localStorage.setItem("confirmWarning","yes");
+  document.getElementById("alertBox").style.display="none";
+}
+</script>
+
+</body>
+</html>
